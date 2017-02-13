@@ -8,7 +8,7 @@
 */
 var employeeTypes = {
     fixedSalary : "fixedSalary",
-    fixedSalaryWithOvertime: "fixedSalaryWithOvertime",
+    regular: "regular",
     developer: "developer",
     contractor: "contractor"
 };
@@ -38,7 +38,7 @@ var paymentCalculator= {
        if(employee.type === employeeTypes.fixedSalary) {
            return employee.pricePerHour * 44;
        }
-       else if(employee.type === employeeTypes.fixedSalaryWithOvertime){
+       else if(employee.type === employeeTypes.regular){
            let hoursWorkedInAWeek = dailyWorkSheets
              .find(x => x.employeeId == employee.id && x.date >= firstDayOfWeek && x.date <= firstDayOfWeek.setDate(firstDayOfWeek.getDate() + 6))
              .map(x => x.hoursWorked)
