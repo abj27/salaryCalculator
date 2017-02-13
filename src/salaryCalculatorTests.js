@@ -11,9 +11,6 @@ describe("Payment calculator get payment", function () {
   let paymentCalculator;
   let overtimeCalculator;
   let baseSalaryCalculator;
-//   let pricePerHour;
-//   let workingHoursInWeek = 44;
-//   let overTimeFactor = 1.5;
   let firstDayOfWeek =new Date();
   beforeEach(function () {
     //Arrange
@@ -32,47 +29,6 @@ describe("Payment calculator get payment", function () {
       td.when(baseSalaryCalculator.calculate(employee)).thenReturn(4);
       expect(sut(employee, firstDayOfWeek)).to.equal(9);
   });
-/*
-  it("should return a full week salary for a fixed salary employee", function () {
-    //Act
-    employee = new Employee(employeeTypes.fixedSalary, faker.lorem.word(), pricePerHour );
-    //Assert
-    expect(sut(employee, firstDayOfWeek)).to.equal(workingHoursInWeek * pricePerHour);
-  });
-
-  it("should return a full week salary for a regular employee that didn't work extra hours ", function () {
-    employee = new Employee(employeeTypes.regular, faker.lorem.word(), pricePerHour );
-    // O.O I have to set up ALL THE HOURS IN THE WEEK -_- maldito alberto y su maldito código aqueroso...
-    setWeekHours(firstDayOfWeek,[8,8,8,8,8,4])
-    expect(sut(employee, firstDayOfWeek)).to.equal(workingHoursInWeek * pricePerHour);
-  });
-
-  it("should return a full week salary plus overtime for a regular employee that worked extra hours ", function () {
-    employee = new Employee(employeeTypes.regular, faker.lorem.word(), pricePerHour );
-    setWeekHours(firstDayOfWeek,[8,8,9,9,8,4]);
-    expect(sut(employee, firstDayOfWeek)).to.equal(workingHoursInWeek * pricePerHour + 2 *overTimeFactor * workingHoursInWeek);
-  });
-
-  it("should return a the amount of worked hours times the price per hour", function () {
-    employee = new Employee(employeeTypes.regular, faker.lorem.word(), pricePerHour );
-    var weekHours = [8,8,9,9,8,4];
-    setWeekHours(firstDayOfWeek,weekHours);
-    var workedHours = weekHours.aggregate(function(accumulator, current){
-        return accumulator + current;
-    });
-    expect(sut(employee, firstDayOfWeek)).to.equal(workedHours * pricePerHour);
-  });
-
-  it("should return a the amount of worked hours times the price per hour", function () {
-    employee = new Employee(employeeTypes.regular, faker.lorem.word(), pricePerHour );
-    var weekHours = [8,8,9,9,8,4];
-    setWeekHours(firstDayOfWeek,weekHours);
-    var workedHours = weekHours.aggregate(function(accumulator, current){
-        return accumulator + current;
-    });
-    expect(sut(employee, firstDayOfWeek)).to.equal(workedHours * pricePerHour);
-  });
-*/
 });
 
 

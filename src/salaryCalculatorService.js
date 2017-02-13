@@ -99,40 +99,6 @@ var PaymentCalculator= function(baseSalaryCalculator, overtimeCalculator){
        var baseSalary =baseSalaryCalculator.calculate(employee.type, employee.hourlyRate);
        var overtime = overtimeCalculator.calculate(employee.id, employee.type, employee.hourlyRate, firstDayOfWeek);
        return baseSalary + overtime;
-       /*
-      if(employee.type === employeeTypes.fixedSalary) {
-           return employee.hourlyRate * 44;
-       }
-       else if(employee.type === employeeTypes.regular){
-           let hoursWorkedInAWeek = dailyWorkSheets
-             .find(x => x.employeeId == employee.id && x.date >= firstDayOfWeek && x.date <= firstDayOfWeek.setDate(firstDayOfWeek.getDate() + 6))
-             .map(x => x.hoursWorked)
-             .reduce((accumulator, current) =>{ return accumulator + current});
-           if(hoursWorkedInAWeek > 44) {
-              return employee.hourlyRate * 44 + (hoursWorkedInAWeek - 44) * 1.5
-           }
-           else{
-               return employee.hourlyRate * 44;
-           }
-
-       }
-       else if(employee.type === employeeTypes.contractor){
-           let hoursWorkedInAWeek = dailyWorkSheets
-             .find(x => x.employeeId == employee.id && x.date >= firstDayOfWeek && x.date <= firstDayOfWeek.setDate(firstDayOfWeek.getDate() + 6))
-             .map(x => x.hoursWorked)
-             .reduce((accumulator, current) =>{ return accumulator + current});
-          return hoursWorkedInAWeek * employee.hourlyRate;
-       }
-       else if(employee.type === employeeTypes.developer){
-           let extraPay= dailyWorkSheets
-             .find(x => x.employeeId == employee.id && x.date >= firstDayOfWeek && x.date <= firstDayOfWeek.setDate(firstDayOfWeek.getDate() + 6))
-             .map(x => {return{hoursWorked: x.hoursWorked, date: x.date}})
-             .reduce((accumulator, current) =>{ if(current.hoursWorked > 8){
-                 return accumulator + PicaPolloAPi().getPicapolloPrice(current.date);
-             }}, 0);
-          return 44 * employee.hourlyRate + extraPay;
-       }
-      */
     }
 };
 var paymentCalculator = new PaymentCalculator(baseSalaryCalculator, overtimeCalculator);
